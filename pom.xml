@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>org.xxpay</groupId>
+  <artifactId>xxpay-master</artifactId>
+  <version>1.0.0</version>
+  <packaging>pom</packaging>
+  <name>xxpay-master</name>
+  <description>xxpay-master</description>
+
+  <modules>
+    <module>xxpay-common</module>
+    <module>xxpay-dal</module>
+    <module>xxpay-mgr</module>
+    <module>xxpay-shop</module>
+    <module>xxpay4spring-cloud</module>
+    <module>xxpay4dubbo</module>
+    <module>xxpay4spring-boot</module>
+  </modules>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    <java.version>1.8</java.version>
+  </properties>
+
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jar-plugin</artifactId>
+        <configuration>
+          <!-- 指定打包的jar包输出路径 -->
+          <outputDirectory>D:\test</outputDirectory>
+          <!--不打入jar包的文件类型或者路径 -->
+          <excludes>
+            <exclude>**/*.properties</exclude>
+            <exclude>**/*.xml</exclude>
+            <exclude>**/*.yml</exclude>
+            <exclude>static/**</exclude>
+            <exclude>templates/**</exclude>
+          </excludes>
+        </configuration>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-resources-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>copy-resources</id>
+            <phase>package</phase>
+            <goals>
+              <goal>copy-resources</goal>
+            </goals>
+            <configuration>
+              <encoding>UTF-8</encoding>
+              <!--打成jar包后复制到的路径 -->
+              <outputDirectory>
+                D:\test1
+              </outputDirectory>
+              <resources>
+                <resource>
+                  <!--项目中的路径 -->
+                  <directory>src/main/resources/</directory>
+                </resource>
+              </resources>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+
+
+</project>
